@@ -1,38 +1,127 @@
-.App {
-  text-align: center;
+@font-face {
+    font-family: "myfont";
+    src: url(../public/assets/fonts/IRANSansXFaNum-Regular.ttf);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+    background-image: url(../public/assets/images/bg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+* {
+    font-family: "myfont";
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.sidebar {
+    width: 300px;
+    transition: 0.5s;
+    z-index: 999;
+    overflow-y: auto;
 }
 
-.App-link {
-  color: #61dafb;
+.sidebar.active {
+    width: 50px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.menu_btn button {
+    border: none;
+    background-color: transparent;
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex-grow: 1;
+}
+
+.navbar_shadow {
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.box_shadow {
+    box-shadow: rgba(0, 0, 0, 0.28) 0px 3px 9px;
+}
+
+.text_shadow {
+    text-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+@media screen and (max-width: 800px) {
+    .sidebar.active {
+        width: 0;
+    }
+}
+
+/* =============================================== Scroll ======================================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #007274;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #b30000;
+}
+
+.hide_scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.hide_scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.scrollable_menu {
+    max-height: calc(90vh - 215px);
+    overflow-y: auto;
+}
+
+/* ================================= Table Responsive ====================================== */
+
+.table_content {
+    width: 100%;
+}
+
+@media screen and (min-width : 320px) {
+    .table_content {
+        max-width: 300px;
+    }
+}
+@media screen and (min-width : 375px) {
+    .table_content {
+        max-width: 350px;
+    }
+}
+@media screen and (min-width : 425px) {
+    .table_content {
+        max-width: 400px;
+    }
+}
+@media screen and (min-width : 768px) {
+    .table_content {
+        max-width: 100%;
+    }
+}
+
+/* ================================= Table Responsive ====================================== */
+
+.z_index {
+    z-index: 1000;
 }
