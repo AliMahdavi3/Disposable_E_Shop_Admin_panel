@@ -3,7 +3,7 @@ import Index from './layouts/Index';
 
 function App() {
   return (
-    <div className="app">
+    <div className="app dark:bg-amber-300">
       <Index/>
     </div>
   );

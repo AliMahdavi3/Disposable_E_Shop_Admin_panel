@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FaArrowLeft, FaSearch, FaPlus, FaArrowRight } from 'react-icons/fa';
+import { FaSearch, FaPlus } from 'react-icons/fa';
 import ProductTable from './ProductTable';
 import AddProduct from './AddProduct';
 
