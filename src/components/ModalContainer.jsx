@@ -2,7 +2,7 @@ import React from 'react'
 import { createPortal } from 'react-dom';
 import { IoMdClose } from "react-icons/io";
 
-const ModalContainer = ({ open, onClose, children, fullscreen }) => {
+const ModalContainer = ({ open, onClose, children, fullscreen, title }) => {
   return createPortal(
     <div
       onClick={onClose}
@@ -21,6 +21,8 @@ const ModalContainer = ({ open, onClose, children, fullscreen }) => {
             bg-rose-500 hover:bg-gray-50 hover:text-gray-600 cursor-pointer'>
           <IoMdClose />
         </button>
+
+        <h2 className='text-center text-lg text-gray-600'>{title}</h2>
 
         {children}
       </div>

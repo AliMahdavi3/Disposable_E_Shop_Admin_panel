@@ -1,10 +1,25 @@
+import { useLocation } from 'react-router-dom';
 import './App.css';
-import Index from './layouts/Index';
+import AuthLayout from './layouts/auth/AuthLayout';
+import AdminLayout from './layouts/AdminLayout';
 
 function App() {
+
+  const location = useLocation();
+
   return (
-    <div className="app dark:bg-amber-300">
-      <Index/>
+    <div>
+      {
+        location.pathname.includes('/auth') ? (
+
+          <AuthLayout />
+
+        ) : (
+
+          <AdminLayout />
+
+        )
+      }
     </div>
   );
 }

@@ -1,5 +1,18 @@
 import React, { useContext } from 'react'
-import { FaBars, FaRegTimesCircle, FaTachometerAlt, FaDollyFlatbed, FaDolly, FaFileContract, FaHeadset, FaImage, FaImages, FaLaptopCode, FaPencilAlt, FaIndent } from 'react-icons/fa';
+import {
+    FaBars,
+    FaRegTimesCircle,
+    FaTachometerAlt,
+    FaDollyFlatbed,
+    FaDolly,
+    FaFileContract,
+    FaHeadset,
+    FaImage,
+    FaImages,
+    FaLaptopCode,
+    FaPencilAlt,
+    FaIndent
+} from 'react-icons/fa';
 import { ActiveContext } from '../../context/ActiveContext';
 import SidebarLinks from './SidebarLinks';
 import Avatar from './Avatar';

@@ -32,11 +32,13 @@ const PaginatedTable = ({ data, dataInfo, additionalField }) => {
             <tbody>
               {
                 data.map((d, index) => (
-                  <tr key={index} className='bg-lime-200 text-gray-700 border-b-8 border-white flex justify-between items-center container'>
+                  <tr key={index} className='bg-lime-200 text-gray-700 border-b-8
+                   border-white flex justify-between items-center container'>
                     {
                       dataInfo.map((i) => (
-                        <td key={i.field + '_' + d._id} className="py-2 ms-1">
-                          <p className="text-xs text-blue-gray-900 font-medium">{d[i.field]}</p>
+                        <td key={i.field + '_' + d._id} className="py-2 -ms-1">
+                          {i.field === 'id' ? (index + 1) : null}
+                          <p className="w-11 truncate text-xs text-blue-gray-900 font-medium">{d[i.field]}</p>
                         </td>
                       ))
                     }
