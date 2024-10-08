@@ -6,9 +6,9 @@ const Avatar = ({name, imageUrl, active}) => {
             <div className={`${active ? "w-[70%]" : "w-[30%]"}`}>
                 <img className='border-4 rounded-full' src={imageUrl} alt="" />
             </div>
-            <div className={`text-sm text-gray-700 mt-2 text-center
+            <div className={`text-sm text-gray-700 dark:text-gray-300 mt-2 text-center
                 ${active ? 'hidden' : 'block'}`}>
-                <p className='text-yellow-500'>{name}</p>
+                <p className='text-yellow-500 dark:text-sky-300'>{name}</p>
                 <p className='text-xs'>مدیر وبسایت</p>
             </div>
         </div>

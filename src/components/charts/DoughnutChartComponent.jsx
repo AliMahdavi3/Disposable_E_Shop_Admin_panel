@@ -34,18 +34,20 @@ const DoughnutChartComponent = () => {
             Legend: {
                 position: 'right',
             },
-            Title: {
+            title: {
                 display: true,
-                text: 'This is a text!'
+                text: 'This is a title!',
+                color: 'white',
             },
         },
     };
 
+
     return (
-        <div className='col-span-5 md:col-span-1 py-7 w-full h-full bg-white rounded-xl box_shadow
-        flex justify-center items-center'>
-           <Doughnut options={options} data={pieChartData} />
-       </div>
+        <div className='col-span-5 md:col-span-1 py-7 w-full h-full bg-white
+         dark:bg-gray-700 rounded-xl box_shadow flex justify-center items-center'>
+            <Doughnut options={options} data={pieChartData} />
+        </div>
     )
 }
 

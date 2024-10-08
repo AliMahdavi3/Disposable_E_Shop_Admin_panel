@@ -2,6 +2,7 @@ import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Login from '../../pages/auth/Login'
 import { useIsLogin } from '../../hook/authHook';
+import SpinnerLoad from '../../components/SpinnerLoad';
 
 const AuthLayout = () => {
 
@@ -11,8 +12,10 @@ const AuthLayout = () => {
     <>
       {
         loading ? (
-
-          <h1 className='text-center text-4xl pt-32'>لطفا صبر کنید</h1>
+          <div className='pt-32'>
+          <SpinnerLoad />
+          <h1 className='text-center font-bold text-3xl text-gray-500'>لطفا صبر کنید</h1>
+        </div>
 
         ) : !isLogin ? (
 

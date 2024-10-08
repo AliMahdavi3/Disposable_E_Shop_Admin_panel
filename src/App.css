@@ -10,6 +10,14 @@ body {
     background-size: cover;
 }
 
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #626b87;
+    /* Set the background color for dark mode */
+    background-image: none;
+    /* Remove the background image */
+}
+
 * {
     font-family: "myfont";
 }
@@ -104,16 +112,19 @@ body {
         max-width: 300px;
     }
 }
+
 @media screen and (min-width : 375px) {
     .table_content {
         max-width: 350px;
     }
 }
+
 @media screen and (min-width : 425px) {
     .table_content {
         max-width: 400px;
     }
 }
+
 @media screen and (min-width : 768px) {
     .table_content {
         max-width: 100%;
@@ -124,4 +135,9 @@ body {
 
 .z_index {
     z-index: 1000;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 50%;
 }

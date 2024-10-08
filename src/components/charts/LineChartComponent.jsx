@@ -8,7 +8,6 @@ import {
     Title,
     Tooltip,
     Legend,
-    plugins
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
@@ -49,21 +48,35 @@ const lineChartData = {
 const LineChartComponent = () => {
 
     const options = {
-        responsive : true,
+        responsive: true,
         plugins: {
-            Legend : {
-                position : 'top',
+            Legend: {
+                position: 'right',
+                labels: {
+                    color: 'white',  // Change legend text color
+                },
             },
-            Title : {
-                display : true,
-                text : 'This is a text!'
+            title: {
+                display: true,
+                text: 'This is a text!',
+                color: 'white',  // Change title text color
+            },
+            tooltip: {
+                titleColor: 'white',  // Change tooltip title color
+                bodyColor: 'white',  // Change tooltip body color
+            },
+        },
+        elements: {
+            arc: {
+                borderWidth: 2,
+                borderColor: 'white',  // Change the border color of the arcs
             },
         },
     };
 
     return (
         <div className='col-span-5 md:col-span-3 w-full py-7 bg-white rounded-xl box_shadow 
-        flex justify-center items-center'>
+        dark:bg-gray-700 flex justify-center items-center'>
             <Line options={options} data={lineChartData} />
         </div>
     )

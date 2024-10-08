@@ -8,6 +8,8 @@ module.exports = {
       colors: {
         mgreen: '#007274',
         mblack: '#333333',
+        darkModeBgColor: '#3A4153',
+        darkModeTextColor: '#d5e6e4',
       },
       container: {
         center: true,
@@ -25,4 +27,5 @@ module.exports = {
     },
   },
   plugins: [],
+  darkMode: 'class',
 }

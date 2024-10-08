@@ -7,8 +7,8 @@ const Select = ({ options, name, className, label, formik, placeholder }) => {
     <div className="flex flex-col ">
       <label htmlFor={name} className='text-xs mb-1 mt-3 font-medium text-gray-600'>{label}</label>
       <FastField as="select" placeholder={placeholder} name={name} id={name}
-        className={`${formik.touched[name] && formik.errors[name] ?
-          "shadow-sm shadow-rose-600" : null}
+        className={`shadow-sm bg-blue-100 ${formik.touched[name] && formik.errors[name] ?
+          "shadow-rose-600" : 'shadow-gray-700'}
         ${className}`}>
         <option value="">انتخاب {placeholder} ...</option>
         {

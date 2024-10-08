@@ -1,24 +1,17 @@
 import React, { useContext } from 'react'
-import { FaSignOutAlt, FaBell, FaMoon, FaBars } from "react-icons/fa";
-import { ActiveContext } from '../../context/ActiveContext';
+import { FaSignOutAlt, FaBell, FaMoon, FaBars, FaSun } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
-import { Alert } from '../../utils/alert';
-import swal from 'sweetalert';
+import { Alert, Confirm } from '../../utils/alert';
+import { ActiveContext } from '../../context/activeContext';
 
 const Navbar = () => {
 
-  const { active, handleSideBar } = useContext(ActiveContext);
+  const { active, handleSideBar, darkMode, handleDarkMode } = useContext(ActiveContext);
+
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    const confirmLogout = await swal({
-      title: "آیا مطمئن هستید؟",
-      text: "شما می خواهید خارج شوید!",
-      icon: "warning",
-      buttons: ["لغو", "خروج"],
-      dangerMode: true,
-    });
-
+    const confirmLogout = await Confirm('آیا مطمئن هستید؟', 'شما میخواهید خارج شوید!');
     if (confirmLogout) {
       try {
         localStorage.removeItem('token');
@@ -32,7 +25,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className='w-full h-16 rounded-xl bg-white box_shadow flex items-center justify-between lg:justify-end'>
+    <div className='w-full h-16 rounded-xl dark:bg-darkModeBgColor bg-white box_shadow flex items-center justify-between lg:justify-end'>
       <div className='flex lg:hidden'>
         {
           active ? (
@@ -43,14 +36,20 @@ const Navbar = () => {
         }
       </div>
       <div className={`${!active ? "hidden md:block px-5 pt-1" : "px-5 pt-1"}`}>
-        <button className='ms-5'>
-          <FaMoon className='text-xl text-mgreen md:hover:text-rose-500 cursor-pointer' />
+        <button onClick={handleDarkMode} className='ms-5'>
+          {
+            darkMode ? (
+              <FaSun className='text-xl text-gray-200 md:hover:text-rose-500 cursor-pointer' />
+            ) : (
+              <FaMoon className='text-xl text-mgreen md:hover:text-rose-500 cursor-pointer' />
+            )
+          }
         </button>
         <button className='ms-5'>
-          <FaBell className='text-xl text-mgreen md:hover:text-rose-500 cursor-pointer' />
+          <FaBell className='text-xl text-mgreen dark:text-gray-200 md:hover:text-rose-500 cursor-pointer' />
         </button>
         <button onClick={handleLogout} className='ms-5'>
-          <FaSignOutAlt className='text-xl text-mgreen md:hover:text-rose-500 cursor-pointer' />
+          <FaSignOutAlt className='text-xl text-mgreen dark:text-gray-200 md:hover:text-rose-500 cursor-pointer' />
         </button>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Pie , Doughnut } from 'react-chartjs-2';
+import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 
 ChartJS.register(
@@ -33,17 +33,31 @@ const PieChartComponent = () => {
         plugins: {
             Legend: {
                 position: 'right',
+                labels: {
+                    color: 'white',  // Change legend text color
+                },
             },
-            Title: {
+            title: {
                 display: true,
-                text: 'This is a text!'
+                text: 'This is a text!',
+                color: 'white',  // Change title text color
+            },
+            tooltip: {
+                titleColor: 'white',  // Change tooltip title color
+                bodyColor: 'white',  // Change tooltip body color
+            },
+        },
+        elements: {
+            arc: {
+                borderWidth: 2,
+                borderColor: 'white',  // Change the border color of the arcs
             },
         },
     };
 
     return (
         <div className='col-span-5 md:col-span-1 py-7 w-full h-full bg-white rounded-xl box_shadow
-         flex justify-center items-center'>
+         dark:bg-gray-700 flex justify-center items-center'>
             <Pie options={options} data={pieChartData} />
         </div>
     )

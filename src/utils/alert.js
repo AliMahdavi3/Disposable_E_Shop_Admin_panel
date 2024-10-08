@@ -12,3 +12,13 @@ export const Alert = (title, text, icon) => {
         });
     });
 };
+
+export const Confirm = (title, text) => {
+    return swal({
+        title,
+        text,
+        icon: "warning",
+        buttons: ["خیر", "بله"],
+        dangerMode: true,
+    });
+}

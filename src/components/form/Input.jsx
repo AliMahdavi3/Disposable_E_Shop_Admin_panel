@@ -7,8 +7,8 @@ const Input = ({ formik, type, name, placeholder, label, className }) => {
     <div className="flex flex-col">
       <label htmlFor={name} className='text-xs mb-1 mt-3 font-medium text-gray-600'>{label}</label>
       
-      <FastField className={`${formik.touched[name] && formik.errors[name] 
-        ? "shadow-sm shadow-rose-600" : null} 
+      <FastField className={`shadow-sm bg-blue-100 ${formik.touched[name] && formik.errors[name] 
+        ? "shadow-rose-600" : 'shadow-gray-700'} 
         ${className}`}
         placeholder={placeholder}
         type={type}
