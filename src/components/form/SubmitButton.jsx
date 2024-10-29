@@ -14,7 +14,7 @@ const SubmitButton = ({ setOpen }) => {
                         </button>
                         <button onClick={() => setOpen(false)} type='button'
                             className='text-white bg-rose-600 cursor-pointer ms-3 px-3 rounded-md py-2'>
-                            انصراف
+                            خروج
                         </button>
                     </div>
                 )

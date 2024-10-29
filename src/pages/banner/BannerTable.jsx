@@ -1,30 +1,30 @@
 import React, { useEffect, useState } from 'react'
-import PaginatedTable from '../../components/PaginatedTable'
-import { deleteProductService, getProductsService } from '../../services/product';
-import AvailableProduct from './productAddition/AvailableProduct';
-import ProductImages from './productAddition/ProductImages';
-import Actions from './productAddition/Actions';
-import AddProduct from './AddProduct';
-import { Alert, Confirm } from '../../utils/alert';
+import PaginatedTable from '../../components/PaginatedTable';
+import AddBanner from './AddBanner';
 import DetailsModal from './DetailsModal';
+import Actions from './bannerAddition/Actions';
+import BannerImage from './bannerAddition/BannerImage';
+import { Alert, Confirm } from '../../utils/alert';
+import { deleteBannerService, getBannersService } from '../../services/banner';
 import DetailsModalButton from '../../components/DetailsModalButton';
 
+const BannerTable = () => {
 
-const ProductTable = () => {
   const [data, setData] = useState([]);
   const [reInitialValues, setReInitialValues] = useState(null);
   const [editId, setEditId] = useState(null);
-  const [addProductModal, setAddProductModal] = useState(false);
+  const [addBannerModal, setAddBannerModal] = useState(false);
   const [detailsModal, setDetailsModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [forceRender, setForceRender] = useState(0);
 
-  const handleGetProducts = async () => {
+
+  const handleGetBanners = async () => {
     setLoading(true);
     try {
-      const res = await getProductsService();
+      const res = await getBannersService();
       if (res.status === 200) {
-        setData(res.data.products);
+        setData(res.data.banners);
       }
     } catch (error) {
       console.log(error.message);
@@ -33,44 +33,39 @@ const ProductTable = () => {
     }
   }
 
-  const handleDeleteProduct = async (rowData) => {
-    if (await Confirm('حذف محصول!', `آیا از حذف ${rowData.title} اطمینان دارید؟`)) {
+  const handleDeleteBanner = async (rowData) => {
+    if (await Confirm('حذف بنر!', `آیا از حذف بنر اطمینان دارید؟`)) {
       try {
-        const res = await deleteProductService(rowData._id);
+        const res = await deleteBannerService(rowData._id);
         console.log(res);
         if (res.status === 200) {
           setData(data.filter(d => d._id !== rowData._id));
-          Alert('محصول حذف شد', 'عملیات موفقیت آمیز بود!', 'success');
+          Alert('بنر حذف شد', 'عملیات موفقیت آمیز بود!', 'success');
         }
       } catch (error) {
         console.log(error);
-        Alert('خطا در حذف محصول', error.message, 'error');
+        Alert('خطا در حذف بنر', error.message, 'error');
       }
     }
   }
 
   useEffect(() => {
-    handleGetProducts();
+    handleGetBanners();
   }, [forceRender])
 
 
   const dataInfo = [
     { field: 'index', title: '#' },
-    { field: 'title', title: 'نام محصول' },
-    { field: 'productCode', title: 'کد محصول' },
-    { field: 'price', title: 'قیمت' },
-    { field: 'category', title: 'دسته بندی' },
+    { field: 'title', title: 'عنوان' },
+    { field: 'content', title: 'محتوا' },
+    { field: 'link', title: 'آدرس' },
   ]
 
 
   const additionalField = [
     {
-      title: 'موجودی',
-      elements: (rowData) => <AvailableProduct rowData={rowData} />,
-    },
-    {
-      title: 'تصاویر',
-      elements: (rowData) => <ProductImages rowData={rowData} />,
+      title: 'تصویر',
+      elements: (rowData) => <BannerImage rowData={rowData} />,
     },
     {
       title: 'جزئیات',
@@ -82,22 +77,21 @@ const ProductTable = () => {
     {
       title: 'عملیات',
       elements: (rowData) => <Actions
-        handleDeleteProduct={handleDeleteProduct}
+        handleDeleteBanner={handleDeleteBanner}
         setEditId={setEditId}
-        setAddProductModal={setAddProductModal}
+        setAddBannerModal={setAddBannerModal}
         rowData={rowData} />
     },
   ]
 
   const searchParams = {
-    placeholder: 'جستجو نام محصول',
+    placeholder: 'جستجو بنر ',
     searchFiled: 'title',
   }
 
 
-
   return (
-    <> 
+    <>
       <PaginatedTable
         data={data}
         dataInfo={dataInfo}
@@ -106,10 +100,10 @@ const ProductTable = () => {
         numOfPage={3}
         searchParams={searchParams}
       >
-        <AddProduct
+        <AddBanner
           setForceRender={setForceRender}
-          setAddProductModal={setAddProductModal}
-          addProductModal={addProductModal}
+          setAddBannerModal={setAddBannerModal}
+          addBannerModal={addBannerModal}
           reInitialValues={reInitialValues}
           setReInitialValues={setReInitialValues}
           editId={editId}
@@ -126,4 +120,4 @@ const ProductTable = () => {
   )
 }
 
-export default ProductTable
+export default BannerTable

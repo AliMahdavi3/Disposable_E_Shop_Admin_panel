@@ -1,30 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import PaginatedTable from '../../components/PaginatedTable'
-import { deleteProductService, getProductsService } from '../../services/product';
-import AvailableProduct from './productAddition/AvailableProduct';
-import ProductImages from './productAddition/ProductImages';
-import Actions from './productAddition/Actions';
-import AddProduct from './AddProduct';
+import { deleteQuestionService, getQuestionsService } from '../../services/question';
 import { Alert, Confirm } from '../../utils/alert';
+import Actions from './questionAddition/Actions';
+import AddQuestion from './AddQuestion';
 import DetailsModal from './DetailsModal';
 import DetailsModalButton from '../../components/DetailsModalButton';
 
+const QuestionTable = () => {
 
-const ProductTable = () => {
   const [data, setData] = useState([]);
   const [reInitialValues, setReInitialValues] = useState(null);
   const [editId, setEditId] = useState(null);
-  const [addProductModal, setAddProductModal] = useState(false);
+  const [addQuestionModal, setAddQuestionModal] = useState(false);
   const [detailsModal, setDetailsModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [forceRender, setForceRender] = useState(0);
 
-  const handleGetProducts = async () => {
+
+  const handleGetQuestions = async () => {
     setLoading(true);
     try {
-      const res = await getProductsService();
+      const res = await getQuestionsService();
       if (res.status === 200) {
-        setData(res.data.products);
+        setData(res.data.questions);
       }
     } catch (error) {
       console.log(error.message);
@@ -33,45 +32,35 @@ const ProductTable = () => {
     }
   }
 
-  const handleDeleteProduct = async (rowData) => {
-    if (await Confirm('حذف محصول!', `آیا از حذف ${rowData.title} اطمینان دارید؟`)) {
+  const handleDeleteQuestion = async (rowData) => {
+    if (await Confirm('حذف سوال!', `آیا از حذف ${rowData.title} اطمینان دارید؟`)) {
       try {
-        const res = await deleteProductService(rowData._id);
+        const res = await deleteQuestionService(rowData._id);
         console.log(res);
         if (res.status === 200) {
           setData(data.filter(d => d._id !== rowData._id));
-          Alert('محصول حذف شد', 'عملیات موفقیت آمیز بود!', 'success');
+          Alert('سوال حذف شد', 'عملیات موفقیت آمیز بود!', 'success');
         }
       } catch (error) {
         console.log(error);
-        Alert('خطا در حذف محصول', error.message, 'error');
+        Alert('خطا در حذف سوال', error.message, 'error');
       }
     }
   }
 
   useEffect(() => {
-    handleGetProducts();
+    handleGetQuestions();
   }, [forceRender])
 
 
   const dataInfo = [
     { field: 'index', title: '#' },
-    { field: 'title', title: 'نام محصول' },
-    { field: 'productCode', title: 'کد محصول' },
-    { field: 'price', title: 'قیمت' },
-    { field: 'category', title: 'دسته بندی' },
+    { field: 'title', title: 'موضوع' },
+    { field: 'content', title: 'پاسخ' },
   ]
 
 
   const additionalField = [
-    {
-      title: 'موجودی',
-      elements: (rowData) => <AvailableProduct rowData={rowData} />,
-    },
-    {
-      title: 'تصاویر',
-      elements: (rowData) => <ProductImages rowData={rowData} />,
-    },
     {
       title: 'جزئیات',
       elements: (rowData) => <DetailsModalButton
@@ -82,34 +71,33 @@ const ProductTable = () => {
     {
       title: 'عملیات',
       elements: (rowData) => <Actions
-        handleDeleteProduct={handleDeleteProduct}
+        handleDeleteQuestion={handleDeleteQuestion}
         setEditId={setEditId}
-        setAddProductModal={setAddProductModal}
+        setAddQuestionModal={setAddQuestionModal}
         rowData={rowData} />
     },
   ]
 
   const searchParams = {
-    placeholder: 'جستجو نام محصول',
+    placeholder: 'جستجو سوال',
     searchFiled: 'title',
   }
 
 
-
   return (
-    <> 
+    <>
       <PaginatedTable
         data={data}
         dataInfo={dataInfo}
         additionalField={additionalField}
         loading={loading}
-        numOfPage={3}
+        numOfPage={5}
         searchParams={searchParams}
       >
-        <AddProduct
+        <AddQuestion
           setForceRender={setForceRender}
-          setAddProductModal={setAddProductModal}
-          addProductModal={addProductModal}
+          setAddQuestionModal={setAddQuestionModal}
+          addQuestionModal={addQuestionModal}
           reInitialValues={reInitialValues}
           setReInitialValues={setReInitialValues}
           editId={editId}
@@ -126,4 +114,4 @@ const ProductTable = () => {
   )
 }
 
-export default ProductTable
+export default QuestionTable

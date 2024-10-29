@@ -6,10 +6,10 @@ import Orders from './orders/Orders';
 import Article from './articles/Article';
 import Questions from './questions/Questions';
 import Banner from './banner/Banner';
-import Slider from './mainSlider/Slider';
 import Discount from './discounts/Discount';
 import Comments from './comments/Comments';
 import Feedback from './feedbacks/Feedback';
+import MainSlider from './mainSlider/MainSlider';
 
 const Content = () => {
   return (
@@ -20,7 +20,7 @@ const Content = () => {
       <Route path='/blog' element={ <Article/>} />
       <Route path='/questions' element={ <Questions/>} />
       <Route path='/banners' element={ <Banner/>} />
-      <Route path='/slider' element={ <Slider/>} />
+      <Route path='/main-slider' element={ <MainSlider/>} />
       <Route path='/discount' element={ <Discount/>} />
       <Route path='/comments' element={ <Comments/>} />
       <Route path='/feedback' element={ <Feedback/>} />

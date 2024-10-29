@@ -111,7 +111,8 @@ const PaginatedTable = ({ data, dataInfo, additionalField, children, loading, nu
 
               </table>
             ) : (
-              <h5 className='mt-5 md:mt-24 text-amber-600 dark:text-darkModeTextColor text-center text-xl'>هیچ محصولی یافت نشد..!</h5>
+              <h5 className='mt-5 md:mt-24 text-amber-600 dark:text-darkModeTextColor
+               text-center text-xl'>هیچ رکوردی یافت نشد..!</h5>
             )
           }
         </div>

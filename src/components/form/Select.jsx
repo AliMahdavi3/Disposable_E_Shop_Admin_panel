@@ -12,7 +12,7 @@ const Select = ({ options, name, className, label, formik, placeholder }) => {
         ${className}`}>
         <option value="">انتخاب {placeholder} ...</option>
         {
-          options.map((o) => (
+          options?.map((o) => (
             <option key={o.id} value={o.value}>{o.value}</option>
           ))
         }

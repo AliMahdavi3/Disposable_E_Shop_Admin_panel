@@ -13,9 +13,10 @@ const AuthLayout = () => {
       {
         loading ? (
           <div className='pt-32'>
-          <SpinnerLoad />
-          <h1 className='text-center font-bold text-3xl text-gray-500'>لطفا صبر کنید</h1>
-        </div>
+            <SpinnerLoad />
+            <h1 className='text-center font-bold text-xl
+            dark:text-darkModeTextColor text-gray-500'>لطفا چند لحظه صبر کنید...!</h1>
+          </div>
 
         ) : !isLogin ? (
 

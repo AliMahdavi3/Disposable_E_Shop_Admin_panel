@@ -107,6 +107,7 @@ const AddProduct = ({ editId, setEditId, setForceRender, setAddProductModal, add
                     control="file"
                     label="تصاویر"
                     placeholder="تصاویر"
+                    isMultiple={true} // Indicate multiple file upload
                     name="image"
                   />
 

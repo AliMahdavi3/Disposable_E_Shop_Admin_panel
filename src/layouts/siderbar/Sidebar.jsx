@@ -46,7 +46,7 @@ const Sidebar = () => {
                 <SidebarLinks path='/blog' icon={<FaFileContract />} active={active} title="مدیریت وبلاگ" />
                 <SidebarLinks path='/questions' icon={<FaIndent />} active={active} title="مدیریت سوالات" />
                 <SidebarLinks path='/banners' icon={<FaImage />} active={active} title="مدیریت بنرها" />
-                <SidebarLinks path='/slider' icon={<FaImages />} active={active} title="مدیریت اسلایدر" />
+                <SidebarLinks path='/main-slider' icon={<FaImages />} active={active} title="مدیریت اسلایدر اصلی" />
                 <SidebarLinks path='/discount' icon={<FaLaptopCode />} active={active} title="مدیریت تخفیف ها" />
                 <SidebarLinks path='/comments' icon={<FaPencilAlt />} active={active} title="مدیریت نظرات" />
                 <SidebarLinks path='/feedback' icon={<FaHeadset />} active={active} title="پشتیبانی" />
