@@ -1,32 +1,29 @@
 import React, { useEffect, useState } from 'react'
-import PaginatedTable from '../../components/PaginatedTable'
-import { deleteProductService, getProductsService } from '../../services/product';
-import AvailableProduct from './productAddition/AvailableProduct';
-import ProductImages from './productAddition/ProductImages';
-import Actions from './productAddition/Actions';
-import AddProduct from './AddProduct';
+import { deleteDiscountCodeService, getDiscountCodesService } from '../../services/discount';
 import { Alert, Confirm } from '../../utils/alert';
-import DetailsModal from './DetailsModal';
+import Actions from './discountAddition/Actions';
 import DetailsModalButton from '../../components/DetailsModalButton';
-import { useParams } from 'react-router-dom';
+import PaginatedTable from '../../components/PaginatedTable';
+import AddDiscount from './AddDiscount';
+import DetailsModal from './DetailsModal';
+import IsActiveCode from './discountAddition/IsActiveCode';
 
-
-const ProductTable = () => {
+const DiscountTable = () => {
 
   const [data, setData] = useState([]);
   const [reInitialValues, setReInitialValues] = useState(null);
   const [editId, setEditId] = useState(null);
-  const [addProductModal, setAddProductModal] = useState(false);
+  const [addDiscountCodeModal, setAddDiscountCodeModal] = useState(false);
   const [detailsModal, setDetailsModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [forceRender, setForceRender] = useState(0);
 
-  const handleGetProducts = async () => {
+  const handleGetDiscountCodes = async () => {
     setLoading(true);
     try {
-      const res = await getProductsService();
+      const res = await getDiscountCodesService();
       if (res.status === 200) {
-        setData(res.data.products);
+        setData(res.data.discounts);
       }
     } catch (error) {
       console.log(error.message);
@@ -35,48 +32,43 @@ const ProductTable = () => {
     }
   }
 
-  const handleDeleteProduct = async (rowData) => {
-    if (await Confirm('حذف محصول!', `آیا از حذف ${rowData.title} اطمینان دارید؟`)) {
+  const handleDeleteDiscountCode = async (rowData) => {
+    if (await Confirm('حذف کد تخفیف!', `آیا از حذف کد تخفیف اطمینان دارید؟`)) {
       try {
-        const res = await deleteProductService(rowData._id);
+        const res = await deleteDiscountCodeService(rowData._id);
         console.log(res);
         if (res.status === 200) {
           setData(data.filter(d => d._id !== rowData._id));
-          Alert('محصول حذف شد', 'عملیات موفقیت آمیز بود!', 'success');
+          Alert('کد تخفیف حذف شد', 'عملیات موفقیت آمیز بود!', 'success');
         }
       } catch (error) {
         console.log(error);
-        Alert('خطا در حذف محصول', error.message, 'error');
+        Alert('خطا در حذف کد تخفیف', error.message, 'error');
       }
     }
   }
 
   useEffect(() => {
-    handleGetProducts();
-  }, [forceRender])
+    handleGetDiscountCodes();
+  }, [forceRender]);
 
 
   const dataInfo = [
     { field: 'index', title: '#' },
-    { field: 'title', title: 'نام محصول' },
-    { field: 'productCode', title: 'کد محصول' },
-    { field: 'price', title: 'قیمت' },
-    { field: 'category', title: 'دسته بندی' },
+    { field: 'code', title: 'کد' },
+    { field: 'percentage', title: 'درصد' },
+    { field: 'expiresAt', title: 'انقضا' },
   ]
-
 
   const additionalField = [
     {
-      title: 'موجودی',
-      elements: (rowData) => <AvailableProduct rowData={rowData} />,
-    },
-    {
-      title: 'تصاویر',
-      elements: (rowData) => <ProductImages rowData={rowData} />,
+      title: 'وضعیت',
+      elements: (rowData) => <IsActiveCode rowData={rowData} />
     },
     {
       title: 'جزئیات',
       elements: (rowData) => <DetailsModalButton
+        className={'me-2'}
         setReInitialValues={setReInitialValues}
         setDetailsModal={setDetailsModal}
         rowData={rowData} />
@@ -84,18 +76,17 @@ const ProductTable = () => {
     {
       title: 'عملیات',
       elements: (rowData) => <Actions
-        handleDeleteProduct={handleDeleteProduct}
+        handleDeleteDiscountCode={handleDeleteDiscountCode}
         setEditId={setEditId}
-        setAddProductModal={setAddProductModal}
+        setAddDiscountCodeModal={setAddDiscountCodeModal}
         rowData={rowData} />
     },
   ]
 
   const searchParams = {
-    placeholder: 'جستجو نام محصول',
-    searchFiled: 'title',
+    placeholder: 'جستجو کد ',
+    searchFiled: 'code',
   }
-
 
 
   return (
@@ -105,13 +96,13 @@ const ProductTable = () => {
         dataInfo={dataInfo}
         additionalField={additionalField}
         loading={loading}
-        numOfPage={3}
+        numOfPage={4}
         searchParams={searchParams}
       >
-        <AddProduct
+        <AddDiscount
           setForceRender={setForceRender}
-          setAddProductModal={setAddProductModal}
-          addProductModal={addProductModal}
+          setAddDiscountCodeModal={setAddDiscountCodeModal}
+          addDiscountCodeModal={addDiscountCodeModal}
           reInitialValues={reInitialValues}
           setReInitialValues={setReInitialValues}
           editId={editId}
@@ -128,4 +119,4 @@ const ProductTable = () => {
   )
 }
 
-export default ProductTable
+export default DiscountTable
