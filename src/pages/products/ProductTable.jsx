@@ -8,7 +8,6 @@ import AddProduct from './AddProduct';
 import { Alert, Confirm } from '../../utils/alert';
 import DetailsModal from './DetailsModal';
 import DetailsModalButton from '../../components/DetailsModalButton';
-import { useParams } from 'react-router-dom';
 
 
 const ProductTable = () => {

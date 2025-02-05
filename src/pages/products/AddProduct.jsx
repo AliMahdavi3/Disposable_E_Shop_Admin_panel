@@ -4,7 +4,7 @@ import ModalContainer from '../../components/ModalContainer';
 import FormikControl from '../../components/form/FormikControl';
 import { FaPlus } from 'react-icons/fa';
 import SubmitButton from '../../components/form/SubmitButton';
-import { categories, colors, initialValues, isAvailable, onSubmit, tags, validationSchema } from './core/core';
+import { categories, colors, initialValues, isAvailable, onSubmit, ratingValue, tags, validationSchema } from './core/core';
 import { getSingleProductService } from '../../services/product';
 import { Alert } from '../../utils/alert';
 
@@ -44,6 +44,7 @@ const AddProduct = ({ editId, setEditId, setForceRender, setAddProductModal, add
         category: editProduct.category,
         color: editProduct.color,
         tag: editProduct.tag,
+        rating: editProduct.rating,
       })
     } else {
       setReInitialValues(null);
@@ -195,6 +196,16 @@ const AddProduct = ({ editId, setEditId, setForceRender, setAddProductModal, add
                         label="دسته بندی"
                         placeholder="دسته بندی"
                         name="category"
+                      />
+
+                      <FormikControl
+                        className="rounded-md px-5 py-2"
+                        formik={formik}
+                        control="select"
+                        options={ratingValue}
+                        label="امتیاز"
+                        placeholder="امتیاز"
+                        name="rating"
                       />
                     </div>
                   </div>

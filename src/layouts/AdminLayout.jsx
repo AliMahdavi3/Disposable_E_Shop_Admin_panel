@@ -21,7 +21,6 @@ const AdminLayout = () => {
     setDarkMode(!darkMode);
   }
 
-  // Effect to toggle dark mode class on body
   useEffect(() => {
     if (darkMode) {
       document.body.classList.add('dark-mode');

@@ -17,7 +17,7 @@ export const onSubmit = async (values, actions, setForceRender, editId) => {
                 Alert('سوال ویرایش شد', 'عملیات موفقیت آمیز بود!', 'success');
                 actions.resetForm();
                 setForceRender(last => last + 1);
-            }
+            } 
         } else {
             const res = await createNewQuestionService(values);
             console.log(res);

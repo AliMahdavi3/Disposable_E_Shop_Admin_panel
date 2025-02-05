@@ -26,7 +26,7 @@ const DetailsModal = ({ reInitialValues, setDetailsModal, detailsModal }) => {
                         <DetailItem label="شناسه (ID) محصول" value={reInitialValues._id} />
                         <DetailItem label="نام محصول" value={reInitialValues.title} />
                         <div className='mb-5 p-4 text-sm md:text-base overflow-y-auto max-h-48 border-2 rounded-md
-                        bg-gray-50 shadow-inner'>
+                            bg-gray-50 shadow-inner'>
                             <strong className='text-violet-700 text-lg'>محتوا:</strong>
                             <p className='text-gray-700 mt-2'>{reInitialValues.content}</p>
                         </div>
@@ -38,12 +38,10 @@ const DetailsModal = ({ reInitialValues, setDetailsModal, detailsModal }) => {
                         <div>
                             <DetailItem label="کد محصول" value={reInitialValues.productCode} />
                             <DetailItem label="قیمت به تومان" value={reInitialValues.price} />
-                        </div>
-                        <div>
                             <DetailItem label="دسته بندی" value={reInitialValues.category} />
-                            <DetailItem label="رنگ" value={reInitialValues.color} />
                         </div>
                         <div>
+                            <DetailItem label="رنگ" value={reInitialValues.color} />
                             <DetailItem label="اندازه" value={reInitialValues.size} />
                             <DetailItem label="وزن" value={reInitialValues.weight} />
                         </div>
@@ -53,6 +51,7 @@ const DetailsModal = ({ reInitialValues, setDetailsModal, detailsModal }) => {
                                 value={reInitialValues.available ? 'موجود' : 'ناموجود'}
                             />
                             <DetailItem label="تگ" value={reInitialValues.tag} />
+                            <DetailItem label="امتیاز" value={reInitialValues.rating} />
                         </div>
                     </div>
 

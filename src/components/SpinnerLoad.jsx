@@ -7,7 +7,7 @@ const SpinnerLoad = ({ isSmall }) => {
                 bg-gradient-to-r from-violet-500 via-mgreen to-rose-500`}>
                 <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 
                 -translate-y-1/2 ${isSmall ? 'w-3 h-3' : 'w-10 h-10'}
-                 bg-gray-200 rounded-full border-2 border-white`}></div>
+                bg-gray-200 rounded-full border-2 border-white`}></div>
             </div>
         </div>
     )

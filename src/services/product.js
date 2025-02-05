@@ -17,6 +17,7 @@ const createFormData = (data) => {
     formData.append('category', data.category);
     formData.append('color', data.color);
     formData.append('tag', data.tag);
+    formData.append('rating', data.rating);
     return formData;
 }
 

@@ -1,6 +1,5 @@
 import httpService from "./httpService"
 
-
 export const loginWithPhoneService = (phone, password) => {
     return httpService('/auth/login', 'post', {
         phone,

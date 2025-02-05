@@ -1,6 +1,6 @@
 import React from 'react'
 import { createPortal } from 'react-dom';
-import { IoMdClose } from "react-icons/io";
+import { FaTimesCircle } from "react-icons/fa";
 
 const ModalContainer = ({ open, onClose, children, fullscreen, title }) => {
 
@@ -20,10 +20,10 @@ const ModalContainer = ({ open, onClose, children, fullscreen, title }) => {
         <div className='container pb-5 flex justify-between items-center'>
           <h2 className='text-lg text-gray-500'>{title}</h2>
           <button onClick={onClose} className='rounded-lg p-1 text-gray-100 bg-rose-500 cursor-pointer'>
-            <IoMdClose />
+            <FaTimesCircle />
           </button>
         </div>
-          
+
         {children}
 
       </div>

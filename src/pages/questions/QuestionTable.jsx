@@ -103,6 +103,7 @@ const QuestionTable = () => {
           editId={editId}
           setEditId={setEditId}
         />
+        
       </PaginatedTable>
 
       <DetailsModal
