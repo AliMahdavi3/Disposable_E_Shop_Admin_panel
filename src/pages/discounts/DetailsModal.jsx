@@ -45,7 +45,7 @@ const DetailsModal = ({ detailsModal, setDetailsModal, reInitialValues }) => {
 
           <div className='w-full my-10'>
             <button onClick={() => setDetailsModal(false)} className='w-full bg-rose-500
-                    text-white py-2 rounded-md'>خروج</button>
+              text-white py-2 rounded-md'>خروج</button>
           </div>
         </div>
       )}
