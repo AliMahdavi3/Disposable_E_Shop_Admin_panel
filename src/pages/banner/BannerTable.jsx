@@ -4,9 +4,9 @@ import AddBanner from './AddBanner';
 import DetailsModal from './DetailsModal';
 import Actions from './bannerAddition/Actions';
 import BannerImage from './bannerAddition/BannerImage';
-import { Alert, Confirm } from '../../utils/alert';
 import { deleteBannerService, getBannersService } from '../../services/banner';
 import DetailsModalButton from '../../components/DetailsModalButton';
+import { Alert, Confirm } from '../../utils/sweetalert2';
 
 const BannerTable = () => {
 
@@ -34,7 +34,7 @@ const BannerTable = () => {
   }
 
   const handleDeleteBanner = async (rowData) => {
-    if (await Confirm('حذف بنر!', `آیا از حذف بنر اطمینان دارید؟`)) {
+    if (await Confirm('حذف بنر!', `آیا از حذف بنر اطمینان دارید؟`, 'question')) {
       try {
         const res = await deleteBannerService(rowData._id);
         console.log(res);

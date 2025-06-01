@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Alert } from '../../utils/alert';
 import { getSingleSlideService } from '../../services/main-slider';
 import { FaPlus } from 'react-icons/fa';
 import ModalContainer from '../../components/ModalContainer';
@@ -7,6 +6,7 @@ import { Form, Formik } from 'formik';
 import { initialValues, onSubmit, validationSchema } from './core/core';
 import FormikControl from '../../components/form/FormikControl';
 import SubmitButton from '../../components/form/SubmitButton';
+import { Alert } from '../../utils/sweetalert2';
 
 const AddSlide = ({ setForceRender, setAddSlideModal, addSlideModal, reInitialValues, setReInitialValues, editId, setEditId }) => {
 

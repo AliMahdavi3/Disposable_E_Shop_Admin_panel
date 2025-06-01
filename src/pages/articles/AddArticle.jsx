@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Form, Formik } from 'formik';
 import { FaPlus } from 'react-icons/fa';
-import { Alert } from '../../utils/alert';
 import { ArticleCategories, initialValues, onSubmit, readingTime, validationSchema } from './core/core';
 import SubmitButton from '../../components/form/SubmitButton';
 import ModalContainer from '../../components/ModalContainer';
 import { getSingleArticleService } from '../../services/article';
 import FormikControl from '../../components/form/FormikControl';
+import { Alert } from '../../utils/sweetalert2';
 
 
 

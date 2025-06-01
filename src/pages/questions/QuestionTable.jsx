@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import PaginatedTable from '../../components/PaginatedTable'
 import { deleteQuestionService, getQuestionsService } from '../../services/question';
-import { Alert, Confirm } from '../../utils/alert';
 import Actions from './questionAddition/Actions';
 import AddQuestion from './AddQuestion';
 import DetailsModal from './DetailsModal';
 import DetailsModalButton from '../../components/DetailsModalButton';
+import { Alert, Confirm } from '../../utils/sweetalert2';
 
 const QuestionTable = () => {
 
@@ -33,7 +33,7 @@ const QuestionTable = () => {
   }
 
   const handleDeleteQuestion = async (rowData) => {
-    if (await Confirm('حذف سوال!', `آیا از حذف ${rowData.title} اطمینان دارید؟`)) {
+    if (await Confirm('حذف سوال!', `آیا از حذف ${rowData.title} اطمینان دارید؟`, 'question')) {
       try {
         const res = await deleteQuestionService(rowData._id);
         console.log(res);

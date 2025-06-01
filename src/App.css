@@ -141,3 +141,58 @@ body.dark-mode {
     pointer-events: none;
     opacity: 50%;
 }
+
+/* ================================== SweetAlert2 ======================================= */
+
+
+.custom-toast {
+    background-color: #ffffff;
+    color: #007274;
+    font-size: 80%;
+    border-radius: 8px;
+}
+
+.swal2-confirm-button {
+    background-color: #0a9c9e !important;
+    color: white !important;
+    font-size: 1rem !important;
+    padding: 10px 20px !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.swal2-cancel-button {
+    background-color: #e42e83 !important;
+    color: white !important;
+    font-size: 1rem !important;
+    padding: 10px 20px !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.swal2-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.swal2-icon {
+    border-radius: 50%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .swal2-popup {
+        font-size: 0.9rem;
+        padding: 20px;
+    }
+
+    .swal2-title {
+        font-size: 1.1rem;
+    }
+
+    .swal2-confirm-button,
+    .swal2-cancel-button {
+        font-size: 0.9rem !important;
+        padding: 8px 16px !important;
+    }
+}

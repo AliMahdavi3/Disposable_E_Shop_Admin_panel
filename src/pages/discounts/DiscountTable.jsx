@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { deleteDiscountCodeService, getDiscountCodesService } from '../../services/discount';
-import { Alert, Confirm } from '../../utils/alert';
 import Actions from './discountAddition/Actions';
 import DetailsModalButton from '../../components/DetailsModalButton';
 import PaginatedTable from '../../components/PaginatedTable';
 import AddDiscount from './AddDiscount';
 import DetailsModal from './DetailsModal';
 import IsActiveCode from './discountAddition/IsActiveCode';
+import { Alert, Confirm } from '../../utils/sweetalert2';
 
 const DiscountTable = () => {
 
@@ -33,7 +33,7 @@ const DiscountTable = () => {
   }
 
   const handleDeleteDiscountCode = async (rowData) => {
-    if (await Confirm('حذف کد تخفیف!', `آیا از حذف کد تخفیف اطمینان دارید؟`)) {
+    if (await Confirm('حذف کد تخفیف!', `آیا از حذف کد تخفیف اطمینان دارید؟`, 'question')) {
       try {
         const res = await deleteDiscountCodeService(rowData._id);
         console.log(res);

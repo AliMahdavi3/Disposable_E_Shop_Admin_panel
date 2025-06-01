@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import { FaSignOutAlt, FaBell, FaMoon, FaBars, FaSun } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
-import { Alert, Confirm } from '../../utils/alert';
 import { ActiveContext } from '../../context/activeContext';
+import { Alert, Confirm } from '../../utils/sweetalert2';
 
 const Navbar = () => {
 
@@ -11,7 +11,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    const confirmLogout = await Confirm('آیا مطمئن هستید؟', 'شما میخواهید خارج شوید!');
+    const confirmLogout = await Confirm('آیا مطمئن هستید؟', 'شما میخواهید خارج شوید!', 'question');
     if (confirmLogout) {
       try {
         localStorage.removeItem('token');

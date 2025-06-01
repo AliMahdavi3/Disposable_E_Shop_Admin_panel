@@ -6,7 +6,7 @@ import { FaPlus } from 'react-icons/fa';
 import SubmitButton from '../../components/form/SubmitButton';
 import { categories, colors, initialValues, isAvailable, onSubmit, ratingValue, tags, validationSchema } from './core/core';
 import { getSingleProductService } from '../../services/product';
-import { Alert } from '../../utils/alert';
+import { Alert } from '../../utils/sweetalert2';
 
 const AddProduct = ({ editId, setEditId, setForceRender, setAddProductModal, addProductModal, reInitialValues, setReInitialValues }) => {
 

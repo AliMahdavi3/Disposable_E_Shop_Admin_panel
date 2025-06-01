@@ -5,9 +5,9 @@ import AvailableProduct from './productAddition/AvailableProduct';
 import ProductImages from './productAddition/ProductImages';
 import Actions from './productAddition/Actions';
 import AddProduct from './AddProduct';
-import { Alert, Confirm } from '../../utils/alert';
 import DetailsModal from './DetailsModal';
 import DetailsModalButton from '../../components/DetailsModalButton';
+import { Alert, Confirm } from '../../utils/sweetalert2';
 
 
 const ProductTable = () => {
@@ -35,7 +35,7 @@ const ProductTable = () => {
   }
 
   const handleDeleteProduct = async (rowData) => {
-    if (await Confirm('حذف محصول!', `آیا از حذف ${rowData.title} اطمینان دارید؟`)) {
+    if (await Confirm('حذف محصول!', `آیا از حذف ${rowData.title} اطمینان دارید؟`, 'question')) {
       try {
         const res = await deleteProductService(rowData._id);
         console.log(res);

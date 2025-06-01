@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { getSingleBannerService } from '../../services/banner';
-import { Alert } from '../../utils/alert';
 import { FaPlus } from 'react-icons/fa';
 import ModalContainer from '../../components/ModalContainer';
 import { Form, Formik } from 'formik';
 import FormikControl from '../../components/form/FormikControl';
 import SubmitButton from '../../components/form/SubmitButton';
 import { initialValues, onSubmit, validationSchema } from './core/core';
+import { Alert } from '../../utils/sweetalert2';
 
 const AddBanner = ({ editId, setEditId, setReInitialValues, reInitialValues, setAddBannerModal, addBannerModal, setForceRender }) => {
 

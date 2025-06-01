@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import PaginatedTable from '../../components/PaginatedTable'
 import AddArticle from './AddArticle'
 import Actions from './articleAddition/Actions';
-import { Alert, Confirm } from '../../utils/alert';
 import { deleteArticleService, getArticleService } from '../../services/article';
 import ArticleImages from './articleAddition/ArticleImages';
 import DetailsModal from './DetailsModal';
 import DetailsModalButton from '../../components/DetailsModalButton';
+import { Alert, Confirm } from '../../utils/sweetalert2';
 
 const ArticleTable = () => {
     const [data, setData] = useState([]);
@@ -38,7 +38,7 @@ const ArticleTable = () => {
     }
 
     const handleDeleteArticle = async (rowData) => {
-        if (await Confirm('حذف مقاله!', `آیا از حذف ${rowData.title} اطمینان دارید؟`)) {
+        if (await Confirm('حذف مقاله!', `آیا از حذف ${rowData.title} اطمینان دارید؟`, 'question')) {
             try {
                 const res = await deleteArticleService(rowData._id);
                 console.log(res);

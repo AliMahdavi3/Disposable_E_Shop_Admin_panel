@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { deleteSlideService, getSlidesService } from '../../services/main-slider';
-import { Alert, Confirm } from '../../utils/alert';
 import Actions from './slideAddition/Actions';
 import SlideImage from './slideAddition/SlideImage';
 import PaginatedTable from '../../components/PaginatedTable';
 import AddSlide from './AddSlide';
 import DetailsModal from './DetailsModal';
 import DetailsModalButton from '../../components/DetailsModalButton';
+import { Alert, Confirm } from '../../utils/sweetalert2';
 
 const SliderTable = () => {
 
@@ -33,7 +33,7 @@ const SliderTable = () => {
   }
 
   const handleDeleteSlide = async (rowData) => {
-    if (await Confirm('حذف اسلاید!', `آیا از حذف اسلاید اطمینان دارید؟`)) {
+    if (await Confirm('حذف اسلاید!', `آیا از حذف اسلاید اطمینان دارید؟`, 'question')) {
       try {
         const res = await deleteSlideService(rowData._id);
         console.log(res);
