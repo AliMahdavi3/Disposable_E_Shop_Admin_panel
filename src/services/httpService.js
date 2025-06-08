@@ -1,6 +1,6 @@
 import axios from 'axios';
 import config from './config.json';
-import { Alert } from '../utils/alert';
+import { Alert } from '../utils/sweetalert2';
 
 export const apiPath = config.offlineApi;
 

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { deleteArticleCommentService, getArticleCommentsService } from '../../../services/comment';
-import { Alert, Confirm } from '../../../utils/alert';
 import DetailsModalButton from '../../../components/DetailsModalButton';
 import CommentActions from './CommentActions';
 import PaginatedTable from '../../../components/PaginatedTable';
 import CommentDetailsModal from './CommentDetailsModal';
 import ReturnButton from '../../../components/ReturnButton';
+import { Alert, Confirm } from '../../../utils/sweetalert2';
 
 const CommentTable = () => {
 
@@ -42,7 +42,7 @@ const CommentTable = () => {
 
 
   const handleDeleteArticleComments = async (rowData) => {
-    if (await Confirm('حذف نظر!', `آیا از حذف ${rowData.content} اطمینان دارید؟`)) {
+    if (await Confirm('حذف نظر!', `آیا از حذف ${rowData.content} اطمینان دارید؟`, 'question')) {
       try {
         const res = await deleteArticleCommentService(articleId, rowData._id);
         console.log(res);

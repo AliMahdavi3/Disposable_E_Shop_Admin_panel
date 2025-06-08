@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
-import { Alert } from '../../../utils/alert';
 import { createNewSlideService, editSlideService } from '../../../services/main-slider';
+import { Alert } from '../../../utils/sweetalert2';
 
 
 export const initialValues = {

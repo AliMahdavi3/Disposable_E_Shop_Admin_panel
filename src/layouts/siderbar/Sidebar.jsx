@@ -11,8 +11,6 @@ import {
     FaImages,
     FaLaptopCode,
     FaIndent,
-    FaComments,
-    FaCommentsDollar
 } from 'react-icons/fa';
 import SidebarLinks from './SidebarLinks';
 import Avatar from './Avatar';
@@ -49,7 +47,7 @@ const Sidebar = () => {
                 <SidebarLinks path='/banners' icon={<FaImage />} active={active} title="مدیریت بنرها" />
                 <SidebarLinks path='/main-slider' icon={<FaImages />} active={active} title="مدیریت اسلایدر اصلی" />
                 <SidebarLinks path='/discount' icon={<FaLaptopCode />} active={active} title="مدیریت تخفیف ها" />
-                <SidebarLinks path='/feedback' icon={<FaHeadset />} active={active} title="پشتیبانی" />
+                <SidebarLinks path='/tickets' icon={<FaHeadset />} active={active} title="مدیریت تیکت ها" />
             </div>
 
         </div>

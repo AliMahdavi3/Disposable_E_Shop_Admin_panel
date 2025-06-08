@@ -20,7 +20,7 @@ const AddProduct = ({ editId, setEditId, setForceRender, setAddProductModal, add
         setEditProduct(oldProduct);
       }
     } catch (error) {
-      Alert('خطا!', 'محصول موردنظر یافت نشد!', 'warning')
+      Alert('خطا!', 'محصول موردنظر یافت نشد!', 'error')
     }
   }
 

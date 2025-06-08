@@ -3,6 +3,7 @@ import Input from './Input';
 import Select from './Select';
 import Textarea from './Textarea';
 import File from './File';
+import TicketInput from './TicketInput';
 
 const FormikControl = (props) => {
   switch (props.control) {
@@ -14,6 +15,8 @@ const FormikControl = (props) => {
         return <Select {...props}/>
     case 'file':
         return <File {...props}/>
+    case 'ticketInput':
+        return <TicketInput {...props}/>
     default:
         return null;
   }

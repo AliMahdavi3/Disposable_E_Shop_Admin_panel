@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
-import { Alert } from '../../../utils/alert';
 import { createNewBannerService, editBannerService } from '../../../services/banner';
+import { Alert } from '../../../utils/sweetalert2';
 
 
 export const initialValues = {

@@ -8,7 +8,6 @@ export const getSingleQuestionService = (questionId) => {
     return httpService(`/api/questions/${questionId}`, 'get');
 }
 
-
 export const createNewQuestionService = (data) => {
     return httpService('/api/question', 'post', data);
 }

@@ -7,10 +7,10 @@ import Article from './articles/Article';
 import Questions from './questions/Questions';
 import Banner from './banner/Banner';
 import Discount from './discounts/Discount';
-import Feedback from './feedbacks/Feedback';
 import MainSlider from './mainSlider/MainSlider';
 import ProductComments from './products/manageComments/ProductComments';
 import ArticleComments from './articles/manageComments/ArticleComments';
+import Tickets from './tickets/Tickets';
 
 
 const Content = () => {
@@ -26,7 +26,7 @@ const Content = () => {
       <Route path='/banners' element={<Banner />} />
       <Route path='/main-slider' element={<MainSlider />} />
       <Route path='/discount' element={<Discount />} />
-      <Route path='/feedback' element={<Feedback />} />
+      <Route path='/tickets' element={<Tickets />} />
 
       <Route path='*' element={<Dashboard />} />
     </Routes>

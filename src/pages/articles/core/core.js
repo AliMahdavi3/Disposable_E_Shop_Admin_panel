@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 import { createNewArticleService, editArticleService } from '../../../services/article';
-import { Alert } from '../../../utils/alert';
+import { Alert } from '../../../utils/sweetalert2';
 
 
 export const initialValues = {
