@@ -33,7 +33,8 @@ const DiscountTable = () => {
   }
 
   const handleDeleteDiscountCode = async (rowData) => {
-    if (await Confirm('حذف کد تخفیف!', `آیا از حذف کد تخفیف اطمینان دارید؟`, 'question')) {
+    const confirmDelete = await Confirm('حذف کد تخفیف!', `آیا از حذف کد تخفیف اطمینان دارید؟`, 'question');
+    if (confirmDelete.isConfirmed) {
       try {
         const res = await deleteDiscountCodeService(rowData._id);
         console.log(res);

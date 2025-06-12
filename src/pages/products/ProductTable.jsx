@@ -35,7 +35,8 @@ const ProductTable = () => {
   }
 
   const handleDeleteProduct = async (rowData) => {
-    if (await Confirm('حذف محصول!', `آیا از حذف ${rowData.title} اطمینان دارید؟`, 'question')) {
+    const confirmDelete = await Confirm('حذف محصول!', `آیا از حذف ${rowData.title} اطمینان دارید؟`, 'question');
+    if (confirmDelete.isConfirmed) {
       try {
         const res = await deleteProductService(rowData._id);
         console.log(res);

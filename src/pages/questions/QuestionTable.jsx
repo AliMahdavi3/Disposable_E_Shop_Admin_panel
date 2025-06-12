@@ -33,7 +33,8 @@ const QuestionTable = () => {
   }
 
   const handleDeleteQuestion = async (rowData) => {
-    if (await Confirm('حذف سوال!', `آیا از حذف ${rowData.title} اطمینان دارید؟`, 'question')) {
+    const confirmDelete = await Confirm('حذف سوال!', `آیا از حذف ${rowData.title} اطمینان دارید؟`, 'question');
+    if (confirmDelete.isConfirmed) {
       try {
         const res = await deleteQuestionService(rowData._id);
         console.log(res);

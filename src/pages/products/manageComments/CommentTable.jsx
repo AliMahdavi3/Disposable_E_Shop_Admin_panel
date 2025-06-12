@@ -44,7 +44,8 @@ const CommentTable = () => {
 
 
   const handleDeleteProductComments = async (rowData) => {
-    if (await Confirm('حذف نظر!', `آیا از حذف ${rowData.content} اطمینان دارید؟`, 'question')) {
+    const confirmDelete = await Confirm('حذف نظر!', `آیا از حذف ${rowData.content} اطمینان دارید؟`, 'question');
+    if (confirmDelete.isConfirmed) {
       try {
         const res = await deleteProductCommentService(productId, rowData._id);
         console.log(res);
@@ -74,8 +75,8 @@ const CommentTable = () => {
       elements: (rowData) => <DetailsModalButton
         setReInitialValues={setReInitialValues}
         setDetailsModal={setDetailsModal}
-        rowData={rowData} 
-        className={'me-2'}/>
+        rowData={rowData}
+        className={'me-2'} />
     },
     {
       title: 'عملیات',
@@ -100,9 +101,9 @@ const CommentTable = () => {
         numOfPage={5}
         searchParams={searchParams}
       >
-        <ReturnButton/>
+        <ReturnButton title={"بازگشت"} />
       </PaginatedTable>
-      
+
       <CommentDetailsModal
         reInitialValues={reInitialValues}
         setDetailsModal={setDetailsModal}

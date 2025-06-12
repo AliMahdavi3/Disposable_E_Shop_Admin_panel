@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Formik } from 'formik';
-import { initialValues, onSubmit, validationSchema } from './core/core';
+import { initialValues, onSubmit, ticketStatusOptions, validationSchema } from './core/core';
 import { userService } from '../../services/auth';
 import { FaPlus } from 'react-icons/fa';
 import ModalContainer from '../../components/ModalContainer';
@@ -52,6 +52,7 @@ const AddTicket = ({ setForceRender, setAddTicketModal, addTicketModal, reInitia
                 phone: userData.phone || '',
                 subject: editTicket?.subject || '',
                 description: editTicket?.description || '',
+                ticketStatus: editTicket?.ticketStatus || '',
                 image: editTicket?.imageUrl || [],
             };
             setReInitialValues(baseValues);
@@ -69,6 +70,7 @@ const AddTicket = ({ setForceRender, setAddTicketModal, addTicketModal, reInitia
                     phone: userData.phone || '',
                     subject: '',
                     description: '',
+                    ticketStatus: '',
                     image: [],
                 });
             }} className='bg-teal-600 dark:bg-darkModeBgColor
@@ -147,6 +149,16 @@ const AddTicket = ({ setForceRender, setAddTicketModal, addTicketModal, reInitia
                                     />
 
                                     <FormikControl
+                                        className="rounded-md px-5 py-2"
+                                        formik={formik}
+                                        control="select"
+                                        options={ticketStatusOptions}
+                                        label="وضعیت"
+                                        placeholder="وضعیت"
+                                        name="ticketStatus"
+                                    />
+
+                                    <FormikControl
                                         className="w-full text-gray-600 rounded-md px-5 py-3 flex 
                                         justify-center items-center"
                                         formik={formik}
@@ -157,14 +169,7 @@ const AddTicket = ({ setForceRender, setAddTicketModal, addTicketModal, reInitia
                                         name="image"
                                     />
 
-                                    <div className='flex flex-col lg:flex-row justify-between items-center gap-5'>
-                                        <div className='w-full '>
-
-                                        </div>
-                                    </div>
-
                                     <SubmitButton setOpen={setAddTicketModal} />
-
                                 </Form>
                             )
                         }

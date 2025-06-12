@@ -12,7 +12,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     const confirmLogout = await Confirm('آیا مطمئن هستید؟', 'شما میخواهید خارج شوید!', 'question');
-    if (confirmLogout) {
+    if (confirmLogout.isConfirmed) {
       try {
         localStorage.removeItem('token');
         await Alert("عملیات موفقیت آمیز بود!", "شما خارج شدید!", "success");

@@ -8,6 +8,7 @@ export const initialValues = {
     phone: "",
     subject: "",
     description: "",
+    ticketStatus: "",
     image: [],
 };
 
@@ -36,10 +37,16 @@ export const onSubmit = async (values, actions, setForceRender, editId) => {
 };
 
 export const validationSchema = Yup.object({
-   name: Yup.string().required("لطفا این قسمت را پر کنید"),
+    name: Yup.string().required("لطفا این قسمت را پر کنید"),
     email: Yup.string().required("لطفا این قسمت را پر کنید")
         .email("لطفا قالب ایمیل را رعایت کنید : aaa@example.bbb"),
     phone: Yup.string().required("لطفا این قسمت را پر کنید"),
-    subject:Yup.string().required("لطفا این قسمت را پر کنید"),
-    description:Yup.string().required("لطفا این قسمت را پر کنید"),
+    subject: Yup.string().required("لطفا این قسمت را پر کنید"),
+    description: Yup.string().required("لطفا این قسمت را پر کنید"),
+    ticketStatus: Yup.string().required("لطفا این قسمت را پر کنید"),
 });
+
+export const ticketStatusOptions = [
+    { id: 1, value: 'Open' },
+    { id: 2, value: 'Closed' },
+];

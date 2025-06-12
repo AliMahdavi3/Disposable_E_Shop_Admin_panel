@@ -6,7 +6,7 @@ import { apiPath } from '../../services/httpService';
 const DetailsModal = ({ detailsModal, setDetailsModal, reInitialValues }) => {
 
   const DetailItem = ({ label, value }) => (
-    <p className='py-3'>
+    <p className='pb-2'>
       <strong className='text-violet-500'>{label} : </strong>
       <span className='text-gray-600'>{value}</span>
     </p>
@@ -21,32 +21,28 @@ const DetailsModal = ({ detailsModal, setDetailsModal, reInitialValues }) => {
     >
       {reInitialValues && (
         <div className='flex flex-col container'>
-
           <div className='border-2 rounded-md p-5 shadow-lg bg-white'>
-            <DetailItem label="شناسه (ID) محصول" value={reInitialValues._id} />
+            <DetailItem label="شناسه (ID) تیکت" value={reInitialValues._id} />
+            <DetailItem label="شناسه (ID) کاربر" value={reInitialValues.userId} />
             <DetailItem label="نام کاربر" value={reInitialValues.name} />
             <DetailItem label="ایمیل" value={reInitialValues.email} />
             <DetailItem label="تلفن" value={reInitialValues.phone} />
-            <div className='mb-5 p-4 text-sm md:text-base h-fit 
-              border-2 rounded-md bg-gray-50 shadow-inner'>
-              <strong className='text-violet-700 text-lg'>موضوع:</strong>
-              <p className='text-gray-700 mt-2'>{reInitialValues.subject}</p>
-            </div>
-            <div className='mb-5 p-4 text-sm md:text-base overflow-y-auto max-h-48 
+            <hr className='py-2' />
+
+            <DetailItem label="موضوع" value={reInitialValues.subject} />
+            <div className='my-3 p-4 text-sm md:text-base overflow-y-auto max-h-48 
               border-2 rounded-md bg-gray-50 shadow-inner'>
               <strong className='text-violet-700 text-lg'>توضیحات:</strong>
               <p className='text-gray-700 mt-2'>{reInitialValues.description}</p>
             </div>
           </div>
 
-          <div className='container flex flex-col md:flex-row justify-center items-start md:justify-around
-            md:items-center mt-5 border-2 rounded-md p-5 bg-white shadow-lg text-xs md:text-base'>
-            <DetailItem label="وضعیت" value={reInitialValues.status} />
-          </div>
-
-          <div className='container flex flex-col md:flex-row justify-center items-start md:justify-around 
-            md:items-center mt-5 border-2 rounded-md text-xs md:text-base p-5 bg-white shadow-lg'>
+          <div className='container mt-5 border-2 rounded-md text-xs md:text-base p-5 bg-white shadow-lg'>
             <div>
+              <DetailItem
+                label="وضعیت"
+                value={reInitialValues.ticketStatus === 'Open' ? 'درجریان' : 'بسته شده'}
+              />
               <DetailItem
                 label="تاریخ ساخت"
                 value={convertDateToJalali(reInitialValues.createdAt)}

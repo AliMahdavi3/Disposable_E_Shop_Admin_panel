@@ -34,7 +34,8 @@ const BannerTable = () => {
   }
 
   const handleDeleteBanner = async (rowData) => {
-    if (await Confirm('حذف بنر!', `آیا از حذف بنر اطمینان دارید؟`, 'question')) {
+    const confirmDelete = await Confirm('حذف بنر!', `آیا از حذف بنر اطمینان دارید؟`, 'question');
+    if (confirmDelete.isConfirmed) {
       try {
         const res = await deleteBannerService(rowData._id);
         console.log(res);

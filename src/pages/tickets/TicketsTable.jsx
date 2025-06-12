@@ -7,6 +7,7 @@ import AddTicket from './AddTicket';
 import Actions from './ticketAdditions/Actions';
 import DetailsModalButton from '../../components/DetailsModalButton';
 import TicketImages from './ticketAdditions/TicketImages';
+import TicketStatus from './ticketAdditions/TicketStatus';
 
 const TicketsTable = () => {
     const [data, setData] = useState([]);
@@ -32,7 +33,8 @@ const TicketsTable = () => {
     }
 
     const handleDeleteTicket = async (rowData) => {
-        if (await Confirm('حذف تیکت!', `آیا از حذف ${rowData.subject} اطمینان دارید؟`, 'question')) {
+        const confirmDelete = await Confirm('حذف تیکت!', `آیا از حذف ${rowData.subject} اطمینان دارید؟`, 'question');
+        if (confirmDelete.isConfirmed) {
             try {
                 const res = await deleteTicketService(rowData._id);
                 console.log(res);
@@ -56,11 +58,14 @@ const TicketsTable = () => {
         { field: 'name', title: 'نام کاربر' },
         { field: 'subject', title: 'موضوع' },
         { field: 'description', title: 'توضیحات' },
-        { field: 'status', title: 'وضعیت' },
     ]
 
 
     const additionalField = [
+        {
+            title: 'وضعیت',
+            elements: (rowData) => <TicketStatus rowData={rowData} />
+        },
         {
             title: 'تصاویر',
             elements: (rowData) => <TicketImages rowData={rowData} />,

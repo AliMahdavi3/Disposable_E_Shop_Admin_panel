@@ -33,7 +33,8 @@ const SliderTable = () => {
   }
 
   const handleDeleteSlide = async (rowData) => {
-    if (await Confirm('حذف اسلاید!', `آیا از حذف اسلاید اطمینان دارید؟`, 'question')) {
+    const confirmDelete = await Confirm('حذف اسلاید!', `آیا از حذف اسلاید اطمینان دارید؟`, 'question');
+    if (confirmDelete.isConfirmed) {
       try {
         const res = await deleteSlideService(rowData._id);
         console.log(res);
@@ -88,31 +89,31 @@ const SliderTable = () => {
 
   return (
     <>
-    <PaginatedTable
-      data={data}
-      dataInfo={dataInfo}
-      additionalField={additionalField}
-      loading={loading}
-      numOfPage={3}
-      searchParams={searchParams}
-    >
-      <AddSlide
-        setForceRender={setForceRender}
-        setAddSlideModal={setAddSlideModal}
-        addSlideModal={addSlideModal}
-        reInitialValues={reInitialValues}
-        setReInitialValues={setReInitialValues}
-        editId={editId}
-        setEditId={setEditId}
-      />
-    </PaginatedTable>
+      <PaginatedTable
+        data={data}
+        dataInfo={dataInfo}
+        additionalField={additionalField}
+        loading={loading}
+        numOfPage={3}
+        searchParams={searchParams}
+      >
+        <AddSlide
+          setForceRender={setForceRender}
+          setAddSlideModal={setAddSlideModal}
+          addSlideModal={addSlideModal}
+          reInitialValues={reInitialValues}
+          setReInitialValues={setReInitialValues}
+          editId={editId}
+          setEditId={setEditId}
+        />
+      </PaginatedTable>
 
-    <DetailsModal
-      reInitialValues={reInitialValues}
-      setDetailsModal={setDetailsModal}
-      detailsModal={detailsModal}
-    />
-  </>
+      <DetailsModal
+        reInitialValues={reInitialValues}
+        setDetailsModal={setDetailsModal}
+        detailsModal={detailsModal}
+      />
+    </>
   )
 }
 

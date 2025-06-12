@@ -11,6 +11,7 @@ import MainSlider from './mainSlider/MainSlider';
 import ProductComments from './products/manageComments/ProductComments';
 import ArticleComments from './articles/manageComments/ArticleComments';
 import Tickets from './tickets/Tickets';
+import RespondToTicket from './tickets/response/RespondToTicket';
 
 
 const Content = () => {
@@ -27,6 +28,7 @@ const Content = () => {
       <Route path='/main-slider' element={<MainSlider />} />
       <Route path='/discount' element={<Discount />} />
       <Route path='/tickets' element={<Tickets />} />
+      <Route path='/tickets/:ticketId' element={<RespondToTicket />} />
 
       <Route path='*' element={<Dashboard />} />
     </Routes>

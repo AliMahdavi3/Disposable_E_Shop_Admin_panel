@@ -42,7 +42,8 @@ const CommentTable = () => {
 
 
   const handleDeleteArticleComments = async (rowData) => {
-    if (await Confirm('حذف نظر!', `آیا از حذف ${rowData.content} اطمینان دارید؟`, 'question')) {
+    const confirmDelete = await Confirm('حذف نظر!', `آیا از حذف ${rowData.title} اطمینان دارید؟`, 'question')
+    if (confirmDelete.isConfirmed) {
       try {
         const res = await deleteArticleCommentService(articleId, rowData._id);
         console.log(res);
@@ -99,7 +100,7 @@ const CommentTable = () => {
         numOfPage={5}
         searchParams={searchParams}
       >
-        <ReturnButton />
+        <ReturnButton title={"بازگشت"} />
       </PaginatedTable>
 
       <CommentDetailsModal

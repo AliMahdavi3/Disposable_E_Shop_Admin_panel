@@ -38,7 +38,8 @@ const ArticleTable = () => {
     }
 
     const handleDeleteArticle = async (rowData) => {
-        if (await Confirm('حذف مقاله!', `آیا از حذف ${rowData.title} اطمینان دارید؟`, 'question')) {
+        const confirmDelete = await Confirm('حذف مقاله!', `آیا از حذف ${rowData.title} اطمینان دارید؟`, 'question')
+        if (confirmDelete.isConfirmed) {
             try {
                 const res = await deleteArticleService(rowData._id);
                 console.log(res);
