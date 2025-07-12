@@ -47,11 +47,15 @@ const DetailsModal = ({ detailsModal, setDetailsModal, reInitialValues }) => {
 
           {reInitialValues.imageUrl && (
             <div className='mt-5 pt-5 flex flex-col md:flex-row justify-between items-center'>
-              <img
-                src={`${apiPath}/${reInitialValues.imageUrl}`}
-                alt="Banner"
-                className="mb-3 w-full h-auto md:w-1/4 border-2 rounded-lg shadow-lg"
-              />
+              {reInitialValues.imageUrl.map((url, index) => (
+                <img
+                  key={index}
+                  src={`${apiPath}/${url}`}
+                  alt={`Banner ${index + 1}`}
+                  className="mb-3 w-[100%] h-[100%] md:w-[15%] md:h-[15%] md:mb-0 border-2
+                  shadow-lg rounded-lg"
+                />
+              ))}
             </div>
           )}
 

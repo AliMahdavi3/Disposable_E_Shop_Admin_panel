@@ -11,6 +11,7 @@ import {
     FaImages,
     FaLaptopCode,
     FaIndent,
+    FaUsers,
 } from 'react-icons/fa';
 import SidebarLinks from './SidebarLinks';
 import Avatar from './Avatar';
@@ -40,8 +41,9 @@ const Sidebar = () => {
 
             <div className='hide_scrollbar scrollable_menu overflow-x-hidden pb-3'>
                 <SidebarLinks path='/' icon={<FaTachometerAlt />} active={active} title="داشبورد" />
-                <SidebarLinks path='/product' icon={<FaDollyFlatbed />} active={active} title="مدیریت محصولات" />
+                <SidebarLinks path='/users' icon={<FaUsers />} active={active} title="مدیریت کاربران" />
                 <SidebarLinks path='/orders' icon={<FaDolly />} active={active} title="مدیریت سفارشات" />
+                <SidebarLinks path='/product' icon={<FaDollyFlatbed />} active={active} title="مدیریت محصولات" />
                 <SidebarLinks path='/blog' icon={<FaFileContract />} active={active} title="مدیریت وبلاگ" />
                 <SidebarLinks path='/questions' icon={<FaIndent />} active={active} title="مدیریت سوالات" />
                 <SidebarLinks path='/banners' icon={<FaImage />} active={active} title="مدیریت بنرها" />

@@ -12,15 +12,17 @@ import ProductComments from './products/manageComments/ProductComments';
 import ArticleComments from './articles/manageComments/ArticleComments';
 import Tickets from './tickets/Tickets';
 import RespondToTicket from './tickets/response/RespondToTicket';
+import Users from './users/Users';
 
 
 const Content = () => {
   return (
     <Routes>
       <Route path='/' element={<Dashboard />} />
+      <Route path='/users' element={<Users />} />
+      <Route path='/orders' element={<Orders />} />
       <Route path='/product' element={<Product />} />
       <Route path='/product/:productId' element={<ProductComments />} />
-      <Route path='/orders' element={<Orders />} />
       <Route path='/blog' element={<Article />} />
       <Route path='/blog/:articleId' element={<ArticleComments />} />
       <Route path='/questions' element={<Questions />} />
