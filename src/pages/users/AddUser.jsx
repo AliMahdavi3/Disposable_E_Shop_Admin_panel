@@ -6,7 +6,7 @@ import { Form, Formik } from 'formik';
 import FormikControl from '../../components/form/FormikControl';
 import { getSingleUserService } from '../../services/user';
 import { Alert } from '../../utils/sweetalert2';
-import { initialValues, onSubmit, validationSchema } from './core/core';
+import { initialValues, onSubmit, userRole, validationSchema } from './core/core';
 
 const AddUser = ({ editId, setEditId, setForceRender, setAddUserModal, addUserModal, reInitialValues, setReInitialValues }) => {
 
@@ -142,8 +142,8 @@ const AddUser = ({ editId, setEditId, setForceRender, setAddUserModal, addUserMo
                       <FormikControl
                         className="rounded-md px-5 py-2"
                         formik={formik}
-                        control="input"
-                        type="text"
+                        control="select"
+                        options={userRole}
                         label="وظیفه"
                         placeholder="وظیفه"
                         name="role"

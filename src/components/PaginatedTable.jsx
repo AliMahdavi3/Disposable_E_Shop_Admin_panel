@@ -85,7 +85,7 @@ const PaginatedTable = ({ data, dataInfo, additionalField, children, loading, nu
                       const actualIndex = (currentPage - 1) * numOfPage + index + 1;
                       return (
                         <tr key={index} className='bg-lime-200 dark:bg-slate-300 text-gray-700 
-                        border-b-8 border-white dark:border-gray-500 flex justify-between items-center container'>
+                          border-b-8 border-white dark:border-gray-500 flex justify-between items-center container'>
                           <td className="py-1 -ms-1">
                             <p className="w-11 truncate text-xs text-blue-gray-900 font-medium">{actualIndex}</p>
                           </td>

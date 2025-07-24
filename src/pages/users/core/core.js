@@ -10,7 +10,7 @@ export const initialValues = {
     city: "",
     address: "",
     zipCode: "",
-    role : "",
+    role: "",
     birthDate: "",
     password: "",
     confirm_password: "",
@@ -34,8 +34,13 @@ export const onSubmit = async (values, actions, setForceRender, editId) => {
             }
         }
     } catch (error) {
-        console.error("Error", error.message);
-        Alert('خطا!', error.message, 'error');
+        if (error.response && error.response.data.message === 'User with this email already exists!') {
+            await Alert('خطا!', 'کاربری با این ایمیل قبلا ثبت شده', 'error');
+        } else if (error.response && error.response.data.message === 'User with this phone number already exists!') {
+            await Alert('خطا!', 'کاربری با این شماره تلفن قبلا ثبت شده', 'error');
+        } else {
+            await Alert('خطا!', error.message, 'error');
+        }
     }
 };
 
@@ -51,3 +56,8 @@ export const validationSchema = Yup.object({
     zipCode: Yup.string().required('لطفا کد پستی خود را وارد کنید'),
     birthDate: Yup.string().required('لطفا تاریخ تولد خود را وارد کنید!'),
 });
+
+export const userRole = [
+    { id: 1, value: 'Admin' },
+    { id: 2, value: 'User' },
+];

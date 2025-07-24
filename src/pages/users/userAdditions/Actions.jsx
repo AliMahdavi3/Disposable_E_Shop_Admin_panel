@@ -1,13 +1,18 @@
 import React from 'react'
-import { FaEdit, FaTrash, FaUserCircle } from 'react-icons/fa';
+import { FaEdit, FaHeart, FaShoppingCart, FaTrash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 const Actions = ({ rowData, setAddUserModal, setEditId, handleDeleteUser }) => {
     const navigate = useNavigate();
     return (
         <>
-            <button onClick={() => navigate(`/users/${rowData._id}`)}>
-                <FaUserCircle className='text-blue-500 dark:text-emerald-600 
+            <button onClick={() => navigate(`/cart/${rowData._id}`, { state: { userName: rowData.name } })}>
+                <FaShoppingCart className='text-blue-500 dark:text-emerald-600 
+                me-2 text-lg hover:text-mgreen' />
+            </button>
+
+            <button onClick={() => navigate(`/favorites/${rowData._id}`, { state: { userName: rowData.name } })}>
+                <FaHeart className='text-pink-500 dark:text-violet-600 
                 me-2 text-lg hover:text-mgreen' />
             </button>
 

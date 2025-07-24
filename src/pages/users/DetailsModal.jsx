@@ -7,7 +7,7 @@ const DetailsModal = ({ reInitialValues, setDetailsModal, detailsModal }) => {
     const DetailItem = ({ label, value }) => (
         <p className='py-3'>
             <strong className='text-violet-500'>{label} : </strong>
-            <span className='text-gray-600'>{value}</span>
+            <span className='text-gray-600'>{value || "نامشخص"}</span>
         </p>
     );
 
@@ -18,7 +18,7 @@ const DetailsModal = ({ reInitialValues, setDetailsModal, detailsModal }) => {
             fullscreen={true}
             title={'اطلاعات کلی کاربر'}
         >
-            {reInitialValues && (
+            {reInitialValues ? (
                 <div className='flex flex-col container'>
                     <div className='border-2 rounded-md p-5 shadow-lg bg-white'>
                         <DetailItem label="شناسه (ID) کاربر" value={reInitialValues._id} />
@@ -28,7 +28,7 @@ const DetailsModal = ({ reInitialValues, setDetailsModal, detailsModal }) => {
                         <div className='mb-5 p-4 text-sm md:text-base overflow-y-auto
                             max-h-48 border-2 rounded-md bg-gray-50 shadow-inner'>
                             <strong className='text-violet-700 text-lg'>آدرس کاربر:</strong>
-                            <p className='text-gray-700 mt-2'>{reInitialValues.address}</p>
+                            <p className='text-gray-700 mt-2'>{reInitialValues?.address || "نامشخص"}</p>
                         </div>
                     </div>
                     <div className='container flex flex-col md:flex-row justify-center
@@ -63,6 +63,10 @@ const DetailsModal = ({ reInitialValues, setDetailsModal, detailsModal }) => {
                         </button>
                     </div>
                 </div>
+            ) : (
+                <p className='text-center pt-20 text-gray-500 dark:text-darkModeTextColor'>
+                    اطلاعاتی برای نمایش وجود ندارد!
+                </p>
             )}
         </ModalContainer>
     )

@@ -13,6 +13,8 @@ import ArticleComments from './articles/manageComments/ArticleComments';
 import Tickets from './tickets/Tickets';
 import RespondToTicket from './tickets/response/RespondToTicket';
 import Users from './users/Users';
+import Cart from './users/userCart/Cart';
+import Favorites from './users/userFavorites/Favorites';
 
 
 const Content = () => {
@@ -20,6 +22,8 @@ const Content = () => {
     <Routes>
       <Route path='/' element={<Dashboard />} />
       <Route path='/users' element={<Users />} />
+      <Route path='/cart/:userId' element={<Cart />} />
+      <Route path='/favorites/:userId' element={<Favorites />} />
       <Route path='/orders' element={<Orders />} />
       <Route path='/product' element={<Product />} />
       <Route path='/product/:productId' element={<ProductComments />} />

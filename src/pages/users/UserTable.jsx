@@ -51,7 +51,7 @@ const UserTable = () => {
 
     useEffect(() => {
         handleGetUsers();
-    }, [forceRender])
+    }, [forceRender]);
 
     const dataInfo = [
         { field: 'index', title: '#' },
@@ -62,8 +62,8 @@ const UserTable = () => {
 
     const additionalField = [
         {
-          title: 'موجودی',
-          elements: (rowData) => <UserRole rowData={rowData} />,
+            title: 'موجودی',
+            elements: (rowData) => <UserRole rowData={rowData} />,
         },
         {
             title: 'جزئیات',
